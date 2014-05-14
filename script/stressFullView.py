@@ -81,7 +81,7 @@ class GalleryTest(unittest.TestCase):
 
     def testSetAsContact(self):
         for i in range(100):
-            self._setPicAs('Contact')
+            self._setPicAs('contact')
             u.tapOnCenter() #Select the contact in the center of the list
             if d(text = 'Complete action using').wait.exists(timeout = 2000):
                 try:
@@ -125,8 +125,9 @@ class GalleryTest(unittest.TestCase):
 
     def testSlidePicture(self):
         for i in range(10):
-            self._slideImageRtoL()
             for j in range(10):
+                self._slideImageRtoL()
+            for k in range(10):
                 self._slideImageLtoR()
 
     def testDeleteOneByOne(self):
@@ -170,7 +171,7 @@ class GalleryTest(unittest.TestCase):
 
     def _clearAndPush500Pic(self):
         commands.getoutput('adb shell rm -r /mnt/sdcard/testalbum/')
-        commands.getoutput('adb push ' + sys.path[0] + 'resource/Stress500pic/ /sdcard/Stress500pic')
+        commands.getoutput('adb push ' + sys.path[0] + 'resource/testStress500pic/ /sdcard/testStress500pic')
         #Refresh media
         commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///sdcard')
 
