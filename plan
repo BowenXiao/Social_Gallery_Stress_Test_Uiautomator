@@ -1,5 +1,5 @@
 [tests]
-script.stress.testSlideShowWithCine = 1
+script.stress.GalleryStress.testSlideShowWithCine = 1
 script.stress.GalleryStress.testSlideShowWithDissolve = 1
 script.stress.GalleryStress.testSlideShowWithFlash = 1
 script.stress.GalleryStress.testSwitchToCamera = 1
