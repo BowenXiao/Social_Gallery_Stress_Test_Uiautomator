@@ -59,7 +59,7 @@ class GalleryTest(unittest.TestCase):
         d(text = 'Pictures').click.wait()
         assert d(text ='Open from').wait.exists(timeout =2000)        
         for i in range(0,100):
-            d(className = 'android.widget.LinearLayout')[12].click.wait()
+            d(className = 'android.widget.LinearLayout')[14].click.wait()
             assert d(packageName = 'com.intel.android.gallery3d').wait.exists(timeout =2000),'enter gallery fail'
             self._pressBack(1)
             time.sleep(1)           
@@ -74,7 +74,7 @@ class GalleryTest(unittest.TestCase):
         assert d(text = 'Attach picture').wait.exists(timeout=1000),'enter menu fail'  
         d(text = 'Attach picture').click.wait()
         for i in range(0,100):
-            d(className = 'android.widget.LinearLayout')[12].click.wait()
+            d(className = 'android.widget.LinearLayout')[16].click.wait()
             assert d(packageName = 'com.intel.android.gallery3d').wait.exists(timeout =2000),'enter gallery fail'
             self._pressBack(1)
             time.sleep(1)          
@@ -85,6 +85,9 @@ class GalleryTest(unittest.TestCase):
         d(resourceId = 'com.android.contacts:id/menu_add_contact').click.wait()
         if d(text ='Add account').wait.exists(timeout =1000):
             d(text ='Keep local').click.wait()
+        time.sleep(1)
+        if d(text ='OK').wait.exists(timeout =1000):
+            d(text ='OK').click.wait()
         assert d(text = 'Done').wait.exists(timeout=1000),'create new contact fail' 
         d(resourceId = 'com.android.contacts:id/frame').click.wait()
         time.sleep(1)

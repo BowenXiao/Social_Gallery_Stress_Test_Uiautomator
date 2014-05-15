@@ -1,25 +1,25 @@
 [tests]
-script.stress.GalleryTest.testSlideShowWithCine = 1
-script.stress.GalleryTest.testSlideShowWithDissolve = 1
-script.stress.GalleryTest.testSlideShowWithFlash = 1
-script.stress.GalleryTest.testSwitchToCamera = 1
-script.stress.GalleryTest.testLaunchGallery = 1
-script.stress.GalleryTest.testSelectFliter = 1
+script.GalleryStress.GalleryStressTest.testSlideShowWithCine = 1
+script.GalleryStress.GalleryStressTest.testSlideShowWithDissolve = 1
+script.GalleryStress.GalleryStressTest.testSlideShowWithFlash = 1
+script.GalleryStress.GalleryStressTest.testSwitchToCamera = 1
+script.GalleryStress.GalleryStressTest.testLaunchGallery = 1
+script.GalleryStress.GalleryStressTest.testSelectFliter = 1
 
-script.stressFullView.GalleryTest.testCropPicture = 1
-script.stressFullView.GalleryTest.testCropPictureCancel = 1
-script.stressFullView.GalleryTest.testAddEvent = 1
-script.stressFullView.GalleryTest.testAddPlace = 1
-script.stressFullView.GalleryTest.testTagOnePicture = 1
-script.stressFullView.GalleryTest.testSetAsContact = 1
-script.stressFullView.GalleryTest.testSetAsWallpaper = 1
-script.stressFullView.GalleryTest.testViewpicture = 1
-script.stressFullView.GalleryTest.testUPIcon = 1
-script.stressFullView.GalleryTest.testSlidePicture = 1
-script.stressFullView.GalleryTest.testdeleteOBO = 1
-script.stressFullView.GalleryTest.testPlayPauseVideo = 1
+script.GalleryStress.GalleryStressTest.testCropPicture = 1
+script.GalleryStress.GalleryStressTest.testCropPictureCancel = 1
+script.GalleryStress.GalleryStressTest.testAddEvent = 1
+script.GalleryStress.GalleryStressTest.testAddPlace = 1
+script.GalleryStress.GalleryStressTest.testTagOnePicture = 1
+script.GalleryStress.GalleryStressTest.testSetAsContact = 1
+script.GalleryStress.GalleryStressTest.testSetAsWallpaper = 1
+script.GalleryStress.GalleryStressTest.testViewPicture = 1
+script.GalleryStress.GalleryStressTest.testUPIcon = 1
+script.GalleryStress.GalleryStressTest.testSlidePicture = 1
+script.GalleryStress.GalleryStressTest.testDeleteOneByOne = 1
+script.GalleryStress.GalleryStressTest.testPlayPauseVideo = 1
 
-script.stressBurst.GalleryTest.testLaunchGalleryFromMS = 1
-script.stressBurst.GalleryTest.testLaunchGalleryFromMMS = 1
-script.stressBurst.GalleryTest.testLaunchGalleryFromEmail = 1
-script.stressBurst.GalleryTest.testLaunchGalleryFromContact = 1
+script.GalleryStress.GalleryStressTest.testLaunchGalleryFromMS = 1
+script.GalleryStress.GalleryStressTest.testLaunchGalleryFromMMS = 1
+script.GalleryStress.GalleryStressTest.testLaunchGalleryFromEmail = 1
+script.GalleryStress.GalleryStressTest.testLaunchGalleryFromContact = 1
