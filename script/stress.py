@@ -8,7 +8,7 @@ import util
 import random
 
 u = util.Util()
-FLITER_LIST = ['Albums','Places','Events','Dates','People']
+FLITER_LIST = ['Albums','Places','Events','Dates','People','Camera Roll','Media']
 
 class GalleryTest(unittest.TestCase):
 
@@ -142,6 +142,8 @@ class GalleryTest(unittest.TestCase):
                 d(text = 'com.intel.camera22').click()
                 d(text = 'Always').click.wait()
             # confirm camera launched
+            if d(text = 'OK').wait.exists(timeout = 2000):
+                d(text = 'OK').click.wait()
             assert d(description = 'Shutter button').wait.exists(timeout = 1000)
             u.pressBack(1)
             # confirm back to gallery

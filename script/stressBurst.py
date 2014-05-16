@@ -15,7 +15,7 @@ import unittest
 
 u=util.Util()
 #Written by Piao chengguo
-commands.getoutput('adb shell am start -n com.android.videoeditor/.ProjectsActivity')
+#commands.getoutput('adb shell am start -n com.android.videoeditor/.ProjectsActivity')
 # PATH
 # key
 
@@ -73,6 +73,8 @@ class GalleryTest(unittest.TestCase):
         d(className = 'android.widget.ImageButton').click.wait()
         assert d(text = 'Attach picture').wait.exists(timeout=1000),'enter menu fail'  
         d(text = 'Attach picture').click.wait()
+        if not d(text = 'Gallery').wait.exists(timeout = 2000):
+            d(resourceId = 'android:id/up').click.wait()
         for i in range(0,100):
             d(className = 'android.widget.LinearLayout')[16].click.wait()
             assert d(packageName = 'com.intel.android.gallery3d').wait.exists(timeout =2000),'enter gallery fail'
@@ -96,10 +98,10 @@ class GalleryTest(unittest.TestCase):
         time.sleep(2)
         assert d(text = 'Open from').wait.exists(timeout=2000),'enter choose photo from gallery menu fail'
         for i in range(0,100):
-            d(className = 'android.widget.LinearLayout')[12].click.wait()
+            d(index = 6).click.wait()
             assert d(packageName = 'com.intel.android.gallery3d').wait.exists(timeout =2000),'enter gallery fail'
             self._pressBack(1)
-            time.sleep(1)          
+            time.sleep(1)
 
 
 
