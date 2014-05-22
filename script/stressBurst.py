@@ -19,6 +19,8 @@ u=util.Util()
 # PATH
 # key
 
+
+
 #################################
 PACKAGE_NAME = 'com.intel.android.gallery3d'
 ACTIVITY_NAME = PACKAGE_NAME + '.app.Gallery'
@@ -57,12 +59,17 @@ class GalleryTest(unittest.TestCase):
         d(description ='Attach').click.wait()
         assert d(text = 'Attach').wait.exists(timeout =1000),'enter attach mode fail'
         d(text = 'Pictures').click.wait()
-        assert d(text ='Open from').wait.exists(timeout =2000)        
+        if d(text ='Open from').wait.exists(timeout =2000):
+            pass
+        else:
+            d(resourceId = 'android:id/up').click.wait()
+            assert d(text ='Open from').wait.exists(timeout =2000)
         for i in range(0,100):
-            d(className = 'android.widget.LinearLayout')[14].click.wait()
+            time.sleep(2)
+            d()[44].click.wait()
             assert d(packageName = 'com.intel.android.gallery3d').wait.exists(timeout =2000),'enter gallery fail'
             self._pressBack(1)
-            time.sleep(1)           
+            time.sleep(1)    
 
 # test case 3
     def testLaunchGalleryFromEmail(self):
@@ -119,7 +126,8 @@ class GalleryTest(unittest.TestCase):
         assert d(resourceId = 'com.android.videoeditor:id/thumbnail').wait.exists(timeout=1000) 
         d(resourceId = 'com.android.videoeditor:id/thumbnail').click.wait()        
         if d(resourceId = 'com.android.videoeditor:id/add_new_media_item_menu').wait.exists(timeout = 3000):
-             print 'created new project'      
+            #print 'created new project'
+            pass      
         else:
             assert d(text = 'Project name').wait.exists(timeout=1000),'fail'
             time.sleep(1)
@@ -156,7 +164,8 @@ class GalleryTest(unittest.TestCase):
         commands.getoutput('adb shell am start -n com.android.email/.activity.Welcome')
         time.sleep(2)
         if d(text ='Account setup').wait.exists(timeout=1000):
-             print 'login the email account'          
+            #print 'login the email account'
+            pass          
         else:
             assert d(resourceId = 'com.android.email:id/compose').wait.exists(timeout=2000),'enter email fail'
         time.sleep(1)                
@@ -180,7 +189,7 @@ class GalleryTest(unittest.TestCase):
 
 
     def _pressBack(self,touchtimes):
-        for i in range(1,touchtimes+1):
+        for i in range(0,touchtimes):
             d.press('back')
 
 if __name__ =='__main__':  
