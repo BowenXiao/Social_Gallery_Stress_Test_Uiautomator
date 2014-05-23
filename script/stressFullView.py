@@ -210,14 +210,14 @@ class GalleryTest(unittest.TestCase):
     def _clearAndPushVideo(self):
         commands.getoutput('adb shell rm -r /mnt/sdcard/testalbum/')
         #commands.getoutput('adb push ' + os.getcwd() + '/resource/testvideo/ ' + '/sdcard/testvideo')
-        commands.getoutput('adb push ' + sys.path[0] + 'resource/testvideo/ ' + '/sdcard/testvideo')
+        commands.getoutput('adb push ' + PATH + '/script/resource/testvideo/ ' + '/sdcard/testvideo')
         #Refresh media
         commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///sdcard')
 
     def _clearAndPush500Pic(self):
         commands.getoutput('adb shell rm -r /mnt/sdcard/testalbum/')
         #commands.getoutput('adb push ' + os.getcwd() + '/resource/testStress500pic/ /sdcard/testStress500pic')
-        commands.getoutput('adb push ' + sys.path[0] + 'resource/testStress500pic/ ' + '/sdcard/testStress500pic')
+        commands.getoutput('adb push ' + PATH + '/script/resource/testStress500pic/ ' + '/sdcard/testStress500pic')
         #Refresh media
         commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///sdcard')
 
