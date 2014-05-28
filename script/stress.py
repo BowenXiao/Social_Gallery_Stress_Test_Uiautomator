@@ -144,7 +144,7 @@ class GalleryTest(unittest.TestCase):
         for i in range(100):
             #Step 1 + Step 2
             d(description = 'Switch to camera').click.wait()
-            if  d(text = 'Complete action using').wait.exists(timeout = 1000):
+            if  d(text = 'Complete action using').wait.exists(timeout = 2000):
                 d(text = 'com.intel.camera22').click()
                 d(text = 'Always').click.wait()
             # confirm camera launched
@@ -152,10 +152,10 @@ class GalleryTest(unittest.TestCase):
                 d(text = 'OK').click.wait()
             if d(text = 'Cancel').wait.exists(timeout = 2000):
                 d(text = 'Cancel').click.wait()
-            assert d(description = 'Shutter button').wait.exists(timeout = 1000)
+            assert d(description = 'Shutter button').wait.exists(timeout = 2000)
             u.pressBack(1)
             # confirm back to gallery
-            assert d(description = 'Switch to camera').wait.exists(timeout = 1000)
+            assert d(description = 'Switch to camera').wait.exists(timeout = 2000)
 
     # Testcase 7
     def testSelectFliter(self):
@@ -168,7 +168,7 @@ class GalleryTest(unittest.TestCase):
         for i in range(100):        
             fliter_list = random.choice(FLITER_LIST)
             u.selectFilter(fliter_list)
-            assert d(text = fliter_list).wait.exists(timeout = 1000)
+            assert d(text = fliter_list).wait.exists(timeout = 2000)
 
     def _longtouchscreencenter(self):
         d.swipe(350,700,351,701)
