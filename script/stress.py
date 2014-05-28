@@ -152,6 +152,7 @@ class GalleryTest(unittest.TestCase):
                 d(text = 'OK').click.wait()
             if d(text = 'Cancel').wait.exists(timeout = 2000):
                 d(text = 'Cancel').click.wait()
+            time.sleep(3)
             assert d(description = 'Shutter button').wait.exists(timeout = 2000)
             u.pressBack(1)
             # confirm back to gallery
