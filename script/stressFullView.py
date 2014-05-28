@@ -12,8 +12,6 @@ import os
 
 u = util.Util()
 
-PATH = os.getcwd()
-
 PACKAGE_NAME = 'com.intel.android.gallery3d'
 ACTIVITY_NAME = PACKAGE_NAME + '/.app.Gallery'
 
@@ -121,6 +119,7 @@ class GalleryTest(unittest.TestCase):
                     d(text = 'com.intel.android.gallery3d').click.wait()
                 finally:
                     d(text = 'Always').click.wait()
+            time.sleep(2)
             d(text = 'Crop').click.wait()
             assert d(description = 'Share').wait.exists(timeout = 2000)
 
