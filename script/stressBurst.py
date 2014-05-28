@@ -47,16 +47,29 @@ class GalleryTest(unittest.TestCase):
 
 # Test case 1
     def testLaunchGalleryFromMS(self):
-        self._creatMovieStudioProject()
-        d(resourceId = 'com.android.videoeditor:id/thumbnail').click.wait()
-        assert d(resourceId = 'com.android.videoeditor:id/add_new_media_item_menu').wait.exists(timeout=1000),'enter project fail'        
+        commands.getoutput('adb shell am start -n com.android.videoeditor/.ProjectsActivity')
+        #self._creatMovieStudioProject()
+        time.sleep(2)
+        d.swipe(360,360,361,361) #Hold on the first item in media list
+        if d(text = 'Delete project').wait.exists(timeout = 2000):
+            while d(text = 'Delete project').wait.exists(timeout = 2000):
+                d(text = 'Delete project').click.wait()
+                if d(text = 'Yes').wait.exists(timeout = 2000):
+                    d(text = 'Yes').click.wait()
+                time.sleep(2)
+                d.swipe(360,360,361,361)
+                if d(text = 'Cancel').wait.exists():
+                    d(text = 'Cancel').click.wait()
+        else:
+            d(text = 'Cancel').click.wait()
+        self.createMovie()
         for i in range(0,100):
             time.sleep(2)
             d(resourceId = 'com.android.videoeditor:id/add_new_media_item_menu').click.wait()        
             assert d(text = 'Import image').wait.exists(timeout = 1000),'enter import image menu fail'
             d(text = 'Import image').click.wait()
             time.sleep(1)
-            self._selectIntelGallery()  
+            self._selectIntelGallery()
             self._pressBack(1)
 
 # Test case 2
@@ -72,7 +85,7 @@ class GalleryTest(unittest.TestCase):
             assert d(text ='Open from').wait.exists(timeout =2000)
         for i in range(0,100):
             time.sleep(2)
-            d()[44].click.wait()
+            d(index = 6).click.wait()
             assert d(packageName = 'com.intel.android.gallery3d').wait.exists(timeout =2000),'enter gallery fail'
             self._pressBack(1)
             time.sleep(1)    
@@ -89,7 +102,7 @@ class GalleryTest(unittest.TestCase):
         if not d(text = 'Gallery').wait.exists(timeout = 2000):
             d(resourceId = 'android:id/up').click.wait()
         for i in range(0,100):
-            d(className = 'android.widget.LinearLayout')[16].click.wait()
+            d(index = 6).click.wait()
             assert d(packageName = 'com.intel.android.gallery3d').wait.exists(timeout =2000),'enter gallery fail'
             self._pressBack(1)
             time.sleep(1)          
@@ -126,27 +139,33 @@ class GalleryTest(unittest.TestCase):
 
 ###@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
 
-    def _creatMovieStudioProject(self):
-        commands.getoutput('adb shell am start -n com.android.videoeditor/.ProjectsActivity')
-        time.sleep(2)
-        assert d(resourceId = 'com.android.videoeditor:id/thumbnail').wait.exists(timeout=1000) 
-        d(resourceId = 'com.android.videoeditor:id/thumbnail').click.wait()        
-        if d(resourceId = 'com.android.videoeditor:id/add_new_media_item_menu').wait.exists(timeout = 3000):
-            #print 'created new project'
-            pass      
-        else:
-            assert d(text = 'Project name').wait.exists(timeout=1000),'fail'
-            time.sleep(1)
-            d(text = 'Project name').click()
-            time.sleep(1)
-            d(text = "Project name").set_text("newproject")
-            time.sleep(1)
-            d(text = 'OK').click.wait()
-            time.sleep(1)
-            assert d(resourceId = 'com.android.videoeditor:id/add_new_media_item_menu').wait.exists(timeout = 3000),'fail'
-        time.sleep(1)
-        self._pressBack(1)
+#    def _creatMovieStudioProject(self):
+#        commands.getoutput('adb shell am start -n com.android.videoeditor/.ProjectsActivity')
+#        time.sleep(2)
+#        assert d(resourceId = 'com.android.videoeditor:id/thumbnail').wait.exists(timeout=1000) 
+#        d(resourceId = 'com.android.videoeditor:id/thumbnail').click.wait()        
+#        if d(resourceId = 'com.android.videoeditor:id/add_new_media_item_menu').wait.exists(timeout = 3000):
+#            #print 'created new project'
+#            pass      
+#        else:
+#            assert d(text = 'Project name').wait.exists(timeout=1000),'fail'
+#            time.sleep(1)
+#            d(text = 'Project name').click()
+#            time.sleep(1)
+#            d(text = "Project name").set_text("newproject")
+#            time.sleep(1)
+#            d(text = 'OK').click.wait()
+#            time.sleep(1)
+#            assert d(resourceId = 'com.android.videoeditor:id/add_new_media_item_menu').wait.exists(timeout = 3000),'fail'
+#        time.sleep(1)
+#        self._pressBack(1)
 
+    def createMovie(self):
+        d(resourceId = 'com.android.videoeditor:id/thumbnail').click.wait()
+        d(text = 'Project name').click.wait()
+        d(text = 'Project name').set_text('newproject')
+        d(text = 'OK').click.wait()
+        #u.pressBack(1)
 
     def _selectIntelGallery(self):
         if d(resourceId = 'android:id/home').wait.exists(timeout=1000):
